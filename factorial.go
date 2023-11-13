@@ -1,29 +1,26 @@
 package main
+
 import (
 	"fmt"
 	"os"
-	
 )
 
-
-func Calfactorial(number int )int{
-	if number < 0{
-		fmt.Println("invalid number")
+func factorial(n int) int {
+	if n < 0 {
+		fmt.Println("Invalid input Enter valid number:")
 		os.Exit(1)
 	}
-	if (number == 0){
+	if n == 0 {
 		return 1
 	}
-	// fmt.Println("number:",number)
-	return (number) * Calfactorial(number-1)
-	
-    
+	return n * factorial(n-1)
 }
-func main(){
-	var number int
-	fmt.Println("Enter number:")
-	fmt.Scan(&number)
-	factorial:=Calfactorial(number)
-	fmt.Printf("Factorial of %v is %v.",factorial,factorial)
 
+func main() {
+	fmt.Print("Enter number:")
+
+	var n int
+	fmt.Scan(&n)
+
+	fmt.Printf("\nFactorial of %d is %d", n, factorial(n))
 }

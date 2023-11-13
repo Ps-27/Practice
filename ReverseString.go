@@ -1,35 +1,42 @@
 package main
+
 import "fmt"
 
-
-func reverse(str string)string{
-	bs:=[]byte(str)
-	fmt.Println(bs)
-	rev:=make([]byte,len(bs))
-	for i,v:=range bs{
-		rev[len(bs)-i-1]=v
+func reverse(s string) {
+	rev := []byte(s)
+	l := len(rev)
+	for i := 0; i < l/2; i++ {
+		rev[i], rev[l-i-1] = rev[l-i-1], rev[i]
 	}
-	fmt.Println("rev bs:",rev)
-	return string(rev)
+	fmt.Println("Reverse of string is :", string(rev))
+}
+func reverse1(str string) {
+	byteStr := []byte(str)
+	l := len(byteStr)
+	for i := 0; i < l/2; i++ {
+		byteStr[i], byteStr[l-i-1] = byteStr[l-i-1], byteStr[i]
+	}
+	fmt.Printf("Reverse of %s is %s", str, string(byteStr))
 }
 
-func ReverseString(str string)(result string){
-
-	for _, v:=range str{
-		result=string(v)+result
+func re(str string) {
+	bs := []byte(str)
+	l := len(str)
+	for i := 0; i < l/2; i++ {
+		bs[i], bs[l-i-1] = bs[l-i-1], bs[i]
 	}
-	
-	return 
+	fmt.Println("  inside new")
+	fmt.Println(string(bs))
 }
-func main(){
+func main() {
+	var str string
 
-	fmt.Print("Enter String:")
-    var s string
-	fmt.Scan(&s)
+	fmt.Println("Enter string :")
+	fmt.Scan(&str)
 
-	fmt.Println("original string:",s)
-	fmt.Println("Reverse string:",reverse(s))
-	fmt.Println("original string:",s)
-	fmt.Println("Reverse string:",ReverseString(s))
+	fmt.Println("Original string is :", str)
 
+	reverse(str)
+	reverse1(str)
+	re(str)
 }
